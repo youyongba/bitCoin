@@ -34,7 +34,20 @@ const getprice = async  () => {
     return arr;
 }
 
-let symbols = await getprice();
+
+// const symbolsfn = async () => {
+
+// }
+let symbols = [];
+ getprice().then(res => {
+    console.log(res,'<---symbols');
+    
+}).catch(err => {
+    console.log(err,'<---err');
+}).finally(() => {
+    console.log('finally');
+});
+
 
 console.log(symbols,'<---symbols');
 
