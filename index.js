@@ -40,7 +40,9 @@ const getprice = async  () => {
 // }
 let symbols = [];
  getprice().then(res => {
-    console.log(res,'<---symbols');
+    console.log(res,'<---symbols###');
+
+    symbols = res;
     
 }).catch(err => {
     console.log(err,'<---err');
