@@ -18,42 +18,6 @@ const fetch = require("node-fetch")
 //     console.log('Error: ', err.message);
 // });
 
-const getprice = async  () => {
-    let arr = [];
-    let res = await fetch('https://api.binance.com/api/v3/ticker/price');
-    let data = await res.json();
-    
-    // 模糊查找
-    data = data.filter(item => item.symbol.includes('USDT'));
-
-    // 遍历数组
-    data.forEach(item => {
-        arr.push(item.symbol);
-    })
-
-    return arr;
-}
-
-
-// const symbolsfn = async () => {
-
-// }
-let symbols = [];
- getprice().then(res => {
-    console.log(res,'<---symbols###');
-
-    symbols = res;
-    
-}).catch(err => {
-    console.log(err,'<---err');
-}).finally(() => {
-    console.log('finally');
-});
-
-
-console.log(symbols,'<---symbols');
-
-// https://api.binance.com/api/v3/klines?symbol=MFTUSDT&interval=1m&limit=6
 
 const limit = 6;
 const interval = '1m';
@@ -87,7 +51,50 @@ const getkline = async (symbols,interval,limit) => {
     return arr;
 }
 
-let kline = getkline(symbols,interval,limit);
+const getprice = async  () => {
+    let arr = [];
+    let res = await fetch('https://api.binance.com/api/v3/ticker/price');
+    let data = await res.json();
+    
+    // 模糊查找
+    data = data.filter(item => item.symbol.includes('USDT'));
+
+    // 遍历数组
+    data.forEach(item => {
+        arr.push(item.symbol);
+    })
+
+    return arr;
+}
+
+
+// const symbolsfn = async () => {
+
+// }
+
+ getprice().then(res => {
+    console.log(res,'<---res###');
+
+    let symbols = res;
+
+    let kline = getkline(symbols,interval,limit);
+    console.log(kline);
+    
+}).catch(err => {
+    console.log(err,'<---err');
+}).finally(() => {
+    console.log('finally');
+});
+
+
+// https://api.binance.com/api/v3/klines?symbol=MFTUSDT&interval=1m&limit=6
+
+
+
+
+
+
+
 
 
 
