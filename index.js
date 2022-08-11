@@ -35,14 +35,12 @@ const getkline = async (symbols,interval,limit) => {
 
             // 找出 (item[2]-item[3]) / item[3]* 100 > 0.5 的数据
             // if((item[2]-item[3]) / item[3]* 100 > 0.5) {
-                avgs.push((item[2]-item[3]) / item[3]* 100 > 0.5);
+                avgs.push((item[2]-item[3]) / item[3]* 100);
             // }
         } )
 
-        // avgs 平均值
-        let avg = avgs.reduce((prev,curr) => {
-            return prev + curr[4];
-        } ,0) / avgs.length;
+        // 找出平均值
+        let avg = avgs.reduce((a,b) => a+b) / avgs.length;
 
         console.log(avg, '<-----avg');
 
