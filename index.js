@@ -10,6 +10,7 @@ fetch('https://api.binance.com/api/v3/ticker/price', {
 .then(async res => {
     let data = await res.json();
    
+    console.log(data,'<---data');
 })
 .catch(err => {
     console.log('Error: ', err.message);
