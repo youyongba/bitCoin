@@ -19,8 +19,9 @@ const fetch = require("node-fetch")
 // });
 
 const getprice = async  () => {
-    let data = await fetch('https://api.binance.com/api/v3/ticker/price');
-    console.log(data,'<###');
+    let res = await fetch('https://api.binance.com/api/v3/ticker/price');
+    let data = await res.json();
+    console.log(data,'<###');    
 }
 
 getprice();
