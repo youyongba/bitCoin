@@ -75,9 +75,9 @@ const getprice = async  () => {
 
     let kline = await getkline(symbols,interval,limit);
     console.log(kline, '<----kline');
-    // 过滤UP和DOWN
-    let filterUpDown = kline.filter(item => item.includes(['UP', 'DOWN']));
-    console.log(filterUpDown, '<----filterUpDown');
+    // 排除UP和DOWN
+    kline = kline.filter(item => !item.includes('UP') && !item.includes('DOWN'));
+    console.log(kline, '<----kline##');
     
 
     
