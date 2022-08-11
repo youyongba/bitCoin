@@ -30,19 +30,17 @@ const getkline = async (symbols,interval,limit) => {
         let res = await fetch(`https://api.binance.com/api/v3/klines?symbol=${symbols[i]}&interval=${interval}&limit=${limit}`);
         let data = await res.json();
         let avgs = [];
-        console.log(data,'<---data'); 
-        data.forEach(item => {
 
-            // 找出 (item[2]-item[3]) / item[3]* 100 > 0.5 的数据
-            // if((item[2]-item[3]) / item[3]* 100 > 0.5) {
-                avgs.push((item[2]-item[3]) / item[3]* 100);
-            // }
+        data.forEach(item => {
+            avgs.push((item[2]-item[3]) / item[3]* 100);
         } )
 
         // 找出平均值
         let avg = avgs.reduce((a,b) => a+b) / avgs.length;
 
-        console.log(avg, '<-----avg');
+        if (avg> 0.5) {
+            arr.push(symbols[i]);
+        }
 
 
     }
@@ -76,7 +74,7 @@ const getprice = async  () => {
     let symbols = res;
 
     let kline = getkline(symbols,interval,limit);
-    console.log(kline);
+    console.log(kline, '<----kline');
     
 }).catch(err => {
     console.log(err,'<---err');
