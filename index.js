@@ -21,7 +21,11 @@ const fetch = require("node-fetch")
 const getprice = async  () => {
     let res = await fetch('https://api.binance.com/api/v3/ticker/price');
     let data = await res.json();
-    console.log(data,'<###');    
+    console.log(data,'<###');   
+    
+    // 模糊查找
+    data = data.filter(item => item.symbol.includes('USDT'));
+    console.log(data, '<--##');
 }
 
 getprice();
