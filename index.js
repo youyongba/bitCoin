@@ -34,7 +34,7 @@ const getprice = async  () => {
     return arr;
 }
 
-let symbols = getprice();
+let symbols = await getprice();
 
 console.log(symbols,'<---symbols');
 
