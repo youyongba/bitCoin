@@ -68,12 +68,12 @@ const getprice = async  () => {
 
 // }
 
- getprice().then(res => {
+ getprice().then(async res => {
     console.log(res,'<---res###');
 
     let symbols = res;
 
-    let kline = getkline(symbols,interval,limit);
+    let kline = await getkline(symbols,interval,limit);
     console.log(kline, '<----kline');
     
 }).catch(err => {
